@@ -97,11 +97,30 @@ const busSchema = new mongoose.Schema({
   },
   busType: {
     type: String,
+    enum: ["Ac", "Sleeper", "No Ac", "Seater"],
     required: [true, "Bus Type is required"],
   },
   capacity: {
     type: Number,
     required: [true, "Capacity is required"],
+  },
+  TypeOfSeats: {
+    type: String,
+    enum: ["male", "female", "single", "double"],
+    required: true,
+  },
+  Amenities: {
+    type: String,
+    enum: [
+      "Seat belt",
+      "Wi-fi",
+      "child seating",
+      "Recliners",
+      "Power outlets",
+      "Private entrance",
+      "Emergency exit",
+    ],
+    default: "",
   },
   rating: {
     value: {
