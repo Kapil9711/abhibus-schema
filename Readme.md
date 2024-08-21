@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
+    enum: ["Male", "Female", "Others"],
     required: [true, "Gender is required"],
   },
   age: {
@@ -233,7 +234,7 @@ const bookingSchema = new mongoose.Schema({
     required: [true, "User id is required"],
   },
   seatNumber: {
-    type: String,
+    type: [Number],
     required: [true, "Seat Number is required"],
   },
   price: {
