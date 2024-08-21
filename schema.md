@@ -106,6 +106,10 @@ name: {
 type: String,
 required: [true, "Bus name is required"],
 },
+price:{
+type:Number,
+requred:[true,'Price is required']
+}
 
 busType: {
 type: String,
