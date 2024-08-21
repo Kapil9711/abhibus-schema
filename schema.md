@@ -1,9 +1,8 @@
-=================
-user schema
-=================
+import mongoose from "mongoose";
 
-const useSchema = new mongoose.Schema( {
+//user schema
 
+const useSchema = new mongoose.Schema({
 username: {
 type: String,
 required: [true, "Please enter your username"],
@@ -11,14 +10,14 @@ unique: true,
 minLength: [5, "Username should be more than 5 character"],
 },
 
-gender:{
-type:String,
-required:[true,'Gender is required']
+gender: {
+type: String,
+required: [true, "Gender is required"],
 },
 
-age:{
-type:Number,
-required:[true,'Age is required]
+age: {
+type: Number,
+required: [true, "Age is required"],
 },
 
 isVerified: {
@@ -27,10 +26,8 @@ default: false,
 },
 dob: {
 type: Date,
-required: true
-}
-,
-
+required: true,
+},
 email: {
 type: String,
 required: [true, "Please enter your email"],
@@ -38,9 +35,9 @@ unique: true,
 validate: [validator.isEmail, "Please provide a valid email"],
 },
 
-phone:{
-type:String,
-}
+phone: {
+type: String,
+},
 
 password: {
 type: String,
@@ -59,58 +56,53 @@ resetPasswordToken: String,
 resetPasswordExpires: String,
 });
 
-===============
-city schema
-===============
+//city schema
+
 const citySchema = new mongoose.Schema({
 name: {
 type: String,
-required: true
+required: true,
 },
 state: {
 type: String,
-required: true
+required: true,
 },
 lat: {
-type: Number
+type: Number,
 },
 lon: {
-type: Number
+type: Number,
 },
 stopPoints: [
 {
 title: {
 type: String,
-required: true
+required: true,
 },
 directions: {
 type: String,
-required: true
+required: true,
 },
 lat: {
-type: Number
+type: Number,
 },
 lon: {
-type: Number
-}
-}
-]
+type: Number,
+},
+},
+],
 });
 
-================
-Bus Schema
-================
+//bus schema
 const busSchema = new mongoose.Schema({
-
 name: {
 type: String,
 required: [true, "Bus name is required"],
 },
-price:{
-type:Number,
-requred:[true,'Price is required']
-}
-
+price: {
+type: Number,
+requred: [true, "Price is required"],
+},
 busType: {
 type: String,
 required: [true, "Bus Type is required"],
@@ -124,55 +116,53 @@ required: [true, "Capacity is required"],
 rating: {
 value: {
 type: Number,
-required: true
+required: true,
 },
 
-totalRatings: {
-type: String,
-required: true
-}
-,
-liveTracking: {
-type: Boolean,
-default: false
-},
-lat:{
-type:Number,
-}
-long:{
-type:Number,
-}
+    totalRatings: {
+      type: String,
+      required: true,
+    },
+    liveTracking: {
+      type: Boolean,
+      default: false,
+    },
+    lat: {
+      type: Number,
+    },
+    long: {
+      type: Number,
+    },
 
-availableSeats: {
-type: Number,
-requred: [true, "Available Seats is required"],
-},
+    availableSeats: {
+      type: Number,
+      requred: [true, "Available Seats is required"],
+    },
 
-bookedSeats: {
-type: Number,
-requred: [true, "Booked Seats is required"],
-},
+    bookedSeats: {
+      type: Number,
+      requred: [true, "Booked Seats is required"],
+    },
 
-status: {
-type: String,
-default: "active",
-},
+    status: {
+      type: String,
+      default: "active",
+    },
 
-partner: {
-type: String,
-required: [true, "Partner is required"],
-},
+    partner: {
+      type: String,
+      required: [true, "Partner is required"],
+    },
 
-licensePlate: {
-type: String,
-requred: [true, "License no. is required"],
+    licensePlate: {
+      type: String,
+      requred: [true, "License no. is required"],
+    },
+
 },
-}
 });
 
-================
-Trip Schema
-================
+// trip schema
 const tripSchema = new mongoose.Schema({
 busId: {
 type: Schema.objectId,
@@ -230,26 +220,25 @@ requred: [true, "Status is required"], //Status of the trip (scheduled, in-progr
 },
 });
 
-================
-Booking Schema
-================
+//bookings schema
+
 const bookingSchema = new mongoose.Schema({
-trip_id: { type: Schema.Types.ObjectId, ref: 'tripModel', required: true }, // Reference to the trip (foreign key)
-bus_id: { type: Schema.Types.ObjectId, ref: 'busModel', required: true }, // Reference to the bus (foreign key)
-user:{
-type:Schema.ObjectId,
-ref:'userModel'
-required:[true,'User id is required']
-}
-seatNumber:{
-type:String,
-required:[true,'Seat Number is required']
-}
-price:{
-type:String,
-required:[true,'Booking Price is requred']
+tripId: { type: Schema.Types.ObjectId, ref: "tripModel", required: true },
+busId: { type: Schema.Types.ObjectId, ref: "busModel", required: true },
+user: {
+type: Schema.ObjectId,
+ref: "userModel",
+required: [true, "User id is required"],
+},
+seatNumber: {
+type: String,
+required: [true, "Seat Number is required"],
+},
+price: {
+type: String,
+required: [true, "Booking Price is requred"],
 },
 seats_booked: { type: Number, required: true }, // Number of seats booked
 booking_time: { type: Date, required: true, default: Date.now }, // Time of booking
-status: { type: String, required: true, default: 'confirmed' } // Status of the booking (e.g., confirmed, canceled)
+status: { type: String, required: true, default: "confirmed" }, // Status of the booking (e.g., confirmed, canceled)
 });
