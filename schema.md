@@ -101,23 +101,28 @@ type: Number
 Bus Schema
 ================
 const busSchema = new mongoose.Schema({
+
 name: {
 type: String,
 required: [true, "Bus name is required"],
 },
+
 busType: {
 type: String,
 required: [true, "Bus Type is required"],
 },
+
 capacity: {
 type: Number,
 required: [true, "Capacity is required"],
 },
+
 rating: {
 value: {
 type: Number,
 required: true
 },
+
 totalRatings: {
 type: String,
 required: true
@@ -127,11 +132,18 @@ liveTracking: {
 type: Boolean,
 default: false
 },
+lat:{
+type:Number,
+}
+long:{
+type:Number,
+}
 
 availableSeats: {
 type: Number,
 requred: [true, "Available Seats is required"],
 },
+
 bookedSeats: {
 type: Number,
 requred: [true, "Booked Seats is required"],
@@ -141,6 +153,7 @@ status: {
 type: String,
 default: "active",
 },
+
 partner: {
 type: String,
 required: [true, "Partner is required"],
